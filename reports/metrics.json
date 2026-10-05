@@ -1,0 +1,742 @@
+{
+  "test_season": "2025-26",
+  "train_seasons": [
+    "2021-22",
+    "2022-23",
+    "2023-24",
+    "2024-25"
+  ],
+  "validation_season": "2024-25",
+  "n_features": 63,
+  "n_test_rows": 26137,
+  "rotation_minutes": 20,
+  "feature_groups": {
+    "form": 47,
+    "context": 6,
+    "opponent": 6,
+    "team": 2,
+    "availability": 2
+  },
+  "targets": {
+    "PTS": {
+      "label": "Points",
+      "params": {
+        "learning_rate": 0.05,
+        "max_leaf_nodes": 15,
+        "max_iter": 400
+      },
+      "models": {
+        "Season average": {
+          "mae": 4.702819804942279,
+          "rmse": 6.205125659062325,
+          "r2": 0.4863875712784619,
+          "bias": -0.3188850797327841,
+          "n": 26137,
+          "mae_rotation": 5.318030002643859
+        },
+        "Last 10 games": {
+          "mae": 4.694239753776044,
+          "rmse": 6.15959843528751,
+          "r2": 0.4938967071237085,
+          "bias": -0.041214060709412116,
+          "n": 26137,
+          "mae_rotation": 5.311362793767257
+        },
+        "Ridge": {
+          "mae": 4.533463529225563,
+          "rmse": 5.907348846718449,
+          "r2": 0.5345000924844093,
+          "bias": 0.18001020662007594,
+          "n": 26137,
+          "mae_rotation": 5.134302251305325
+        },
+        "Random forest": {
+          "mae": 4.533194873415893,
+          "rmse": 5.904090468229743,
+          "r2": 0.5350134722128652,
+          "bias": 0.16857602802078328,
+          "n": 26137,
+          "mae_rotation": 5.145546215912245
+        },
+        "Gradient boosting": {
+          "mae": 4.466350082089692,
+          "rmse": 5.91588650347691,
+          "r2": 0.5331535830880363,
+          "bias": -0.46170855964221075,
+          "n": 26137,
+          "mae_rotation": 5.102184602527229
+        }
+      },
+      "interval": {
+        "coverage": 0.8003213834793588,
+        "avg_width": 14.550920649307004,
+        "validation_coverage": 0.7999689754130148
+      },
+      "ablation": [
+        {
+          "added_group": "form",
+          "n_features": 47,
+          "mae": 4.554821041776357
+        },
+        {
+          "added_group": "context",
+          "n_features": 53,
+          "mae": 4.545263455321715
+        },
+        {
+          "added_group": "opponent",
+          "n_features": 59,
+          "mae": 4.536084537675197
+        },
+        {
+          "added_group": "team",
+          "n_features": 61,
+          "mae": 4.5361544553393
+        },
+        {
+          "added_group": "availability",
+          "n_features": 63,
+          "mae": 4.466350082089692
+        }
+      ],
+      "importance": [
+        {
+          "feature": "PTS_L10",
+          "mae_increase": 0.5864372994017645
+        },
+        {
+          "feature": "PTS_SEASON_AVG",
+          "mae_increase": 0.3536890242191341
+        },
+        {
+          "feature": "TEAM_MISSING_MIN",
+          "mae_increase": 0.11878167220912624
+        },
+        {
+          "feature": "FGA_L5",
+          "mae_increase": 0.0705839340835895
+        },
+        {
+          "feature": "MIN_L3",
+          "mae_increase": 0.05923295538706874
+        },
+        {
+          "feature": "FGA_L3",
+          "mae_increase": 0.027927293779116624
+        },
+        {
+          "feature": "FGA_L10",
+          "mae_increase": 0.022507441130925916
+        },
+        {
+          "feature": "REST_DAYS",
+          "mae_increase": 0.013642808421314415
+        },
+        {
+          "feature": "OPP_ALLOWED_PTS_L10",
+          "mae_increase": 0.00938819603303583
+        },
+        {
+          "feature": "SEASON_GAME_NUMBER",
+          "mae_increase": 0.007504453669940088
+        },
+        {
+          "feature": "MIN_SEASON_AVG",
+          "mae_increase": 0.005403244112805202
+        },
+        {
+          "feature": "PTS_L3",
+          "mae_increase": 0.005397511645556759
+        },
+        {
+          "feature": "FG3M_L3",
+          "mae_increase": 0.0036827013189129807
+        },
+        {
+          "feature": "OPP_ALLOWED_REB_L10",
+          "mae_increase": 0.0035529527956127773
+        },
+        {
+          "feature": "MIN_STD_L10",
+          "mae_increase": 0.0032592010143813375
+        }
+      ]
+    },
+    "REB": {
+      "label": "Rebounds",
+      "params": {
+        "learning_rate": 0.05,
+        "max_leaf_nodes": 15,
+        "max_iter": 200
+      },
+      "models": {
+        "Season average": {
+          "mae": 1.9272164238801353,
+          "rmse": 2.5595277518005526,
+          "r2": 0.4051851493436316,
+          "bias": -0.12179577851002087,
+          "n": 26137,
+          "mae_rotation": 2.0505874380494857
+        },
+        "Last 10 games": {
+          "mae": 1.9437378198272717,
+          "rmse": 2.5619349629875345,
+          "r2": 0.4040657879459125,
+          "bias": 0.0021447731762611077,
+          "n": 26137,
+          "mae_rotation": 2.0754006104632823
+        },
+        "Ridge": {
+          "mae": 1.8864971979358132,
+          "rmse": 2.4671919870796235,
+          "r2": 0.44732730432163104,
+          "bias": 0.057061585805458274,
+          "n": 26137,
+          "mae_rotation": 2.021212205155455
+        },
+        "Random forest": {
+          "mae": 1.8840704959618262,
+          "rmse": 2.4678849572374535,
+          "r2": 0.44701679790581494,
+          "bias": 0.052956309412410946,
+          "n": 26137,
+          "mae_rotation": 2.01703990100392
+        },
+        "Gradient boosting": {
+          "mae": 1.8538316390334122,
+          "rmse": 2.48087175352357,
+          "r2": 0.4411815373993505,
+          "bias": -0.2815520284853801,
+          "n": 26137,
+          "mae_rotation": 1.9972875978888909
+        }
+      },
+      "interval": {
+        "coverage": 0.7974136281899223,
+        "avg_width": 6.074942503097569,
+        "validation_coverage": 0.7999689754130148
+      },
+      "ablation": [
+        {
+          "added_group": "form",
+          "n_features": 47,
+          "mae": 1.8809461763570752
+        },
+        {
+          "added_group": "context",
+          "n_features": 53,
+          "mae": 1.8763441911364245
+        },
+        {
+          "added_group": "opponent",
+          "n_features": 59,
+          "mae": 1.8726022928628188
+        },
+        {
+          "added_group": "team",
+          "n_features": 61,
+          "mae": 1.8722975353389006
+        },
+        {
+          "added_group": "availability",
+          "n_features": 63,
+          "mae": 1.8538316390334122
+        }
+      ],
+      "importance": [
+        {
+          "feature": "REB_SEASON_AVG",
+          "mae_increase": 0.3248266304414232
+        },
+        {
+          "feature": "REB_L10",
+          "mae_increase": 0.16651579124931715
+        },
+        {
+          "feature": "TEAM_MISSING_MIN",
+          "mae_increase": 0.035492739697431164
+        },
+        {
+          "feature": "MIN_L3",
+          "mae_increase": 0.026108464312593505
+        },
+        {
+          "feature": "REB_L3",
+          "mae_increase": 0.009044305044929887
+        },
+        {
+          "feature": "REB_L5",
+          "mae_increase": 0.004575389859667729
+        },
+        {
+          "feature": "REST_DAYS",
+          "mae_increase": 0.0043125200825554115
+        },
+        {
+          "feature": "REB_PER_MIN_L10",
+          "mae_increase": 0.00377920399523779
+        },
+        {
+          "feature": "MIN_TREND",
+          "mae_increase": 0.0021128331665040503
+        },
+        {
+          "feature": "OPP_ALLOWED_REB_L10",
+          "mae_increase": 0.0015721516004634228
+        },
+        {
+          "feature": "PTS_L3",
+          "mae_increase": 0.0014463362970202898
+        },
+        {
+          "feature": "FG3A_L10",
+          "mae_increase": 0.0013853636370545856
+        },
+        {
+          "feature": "SEASON_GAME_NUMBER",
+          "mae_increase": 0.0008336223558134866
+        },
+        {
+          "feature": "AST_SEASON_AVG",
+          "mae_increase": 0.0008266837583352041
+        },
+        {
+          "feature": "FG3M_SEASON_AVG",
+          "mae_increase": 0.0006675032427804576
+        }
+      ]
+    },
+    "AST": {
+      "label": "Assists",
+      "params": {
+        "learning_rate": 0.05,
+        "max_leaf_nodes": 31,
+        "max_iter": 200
+      },
+      "models": {
+        "Season average": {
+          "mae": 1.367176005305338,
+          "rmse": 1.878074409577676,
+          "r2": 0.4654615173896126,
+          "bias": -0.09322430179014624,
+          "n": 26137,
+          "mae_rotation": 1.573444880893606
+        },
+        "Last 10 games": {
+          "mae": 1.37666042057996,
+          "rmse": 1.8772347049317695,
+          "r2": 0.4659394048486645,
+          "bias": -0.012106825998053,
+          "n": 26137,
+          "mae_rotation": 1.5872907901568862
+        },
+        "Ridge": {
+          "mae": 1.3428321048937166,
+          "rmse": 1.8142818952076134,
+          "r2": 0.5011581056022685,
+          "bias": 0.03566799736114373,
+          "n": 26137,
+          "mae_rotation": 1.5468268196106596
+        },
+        "Random forest": {
+          "mae": 1.3433515984470963,
+          "rmse": 1.8125087623006322,
+          "r2": 0.502132684861228,
+          "bias": 0.050024216499269664,
+          "n": 26137,
+          "mae_rotation": 1.5480716615047505
+        },
+        "Gradient boosting": {
+          "mae": 1.3072300779826198,
+          "rmse": 1.8340210540279125,
+          "r2": 0.49024438272375115,
+          "bias": -0.23296522575359468,
+          "n": 26137,
+          "mae_rotation": 1.5235945893414224
+        }
+      },
+      "interval": {
+        "coverage": 0.7987144660825649,
+        "avg_width": 4.167771089950602,
+        "validation_coverage": 0.7999689754130148
+      },
+      "ablation": [
+        {
+          "added_group": "form",
+          "n_features": 47,
+          "mae": 1.3164238667998964
+        },
+        {
+          "added_group": "context",
+          "n_features": 53,
+          "mae": 1.3166427127878013
+        },
+        {
+          "added_group": "opponent",
+          "n_features": 59,
+          "mae": 1.3143693483820644
+        },
+        {
+          "added_group": "team",
+          "n_features": 61,
+          "mae": 1.3154745354467854
+        },
+        {
+          "added_group": "availability",
+          "n_features": 63,
+          "mae": 1.3072300779826198
+        }
+      ],
+      "importance": [
+        {
+          "feature": "AST_SEASON_AVG",
+          "mae_increase": 0.21138427400471738
+        },
+        {
+          "feature": "AST_L10",
+          "mae_increase": 0.13865239239530477
+        },
+        {
+          "feature": "MIN_L3",
+          "mae_increase": 0.026221425901627054
+        },
+        {
+          "feature": "TEAM_MISSING_MIN",
+          "mae_increase": 0.015047451183623975
+        },
+        {
+          "feature": "OPP_ALLOWED_AST_L10",
+          "mae_increase": 0.002407806544933925
+        },
+        {
+          "feature": "REST_DAYS",
+          "mae_increase": 0.002150667967424802
+        },
+        {
+          "feature": "REB_SEASON_AVG",
+          "mae_increase": 0.0014837131077395742
+        },
+        {
+          "feature": "MIN_L5",
+          "mae_increase": 0.0011977801846502583
+        },
+        {
+          "feature": "MIN_TREND",
+          "mae_increase": 0.0009624949550439688
+        },
+        {
+          "feature": "MIN_SEASON_AVG",
+          "mae_increase": 0.0008354715251726041
+        },
+        {
+          "feature": "HOME",
+          "mae_increase": 0.0007788421626512646
+        },
+        {
+          "feature": "FGA_L3",
+          "mae_increase": 0.0007111507935979589
+        },
+        {
+          "feature": "AST_PER_MIN_L10",
+          "mae_increase": 0.0006782969155655719
+        },
+        {
+          "feature": "USAGE_PER_MIN_L10",
+          "mae_increase": 0.0005628823533838645
+        },
+        {
+          "feature": "OPP_MISSING_MIN",
+          "mae_increase": 0.0004976253529460628
+        }
+      ]
+    },
+    "FG3M": {
+      "label": "3-Pointers Made",
+      "params": {
+        "learning_rate": 0.05,
+        "max_leaf_nodes": 31,
+        "max_iter": 400
+      },
+      "models": {
+        "Season average": {
+          "mae": 0.8987751412357351,
+          "rmse": 1.26579556701969,
+          "r2": 0.2797915705265597,
+          "bias": -0.03192550551522862,
+          "n": 26137,
+          "mae_rotation": 1.039572373647053
+        },
+        "Last 10 games": {
+          "mae": 0.905471049676582,
+          "rmse": 1.2708401560119595,
+          "r2": 0.2740396225222763,
+          "bias": -0.00010123701059921224,
+          "n": 26137,
+          "mae_rotation": 1.0521101260233023
+        },
+        "Ridge": {
+          "mae": 0.9008902568870567,
+          "rmse": 1.2313379403684341,
+          "r2": 0.31846905163552697,
+          "bias": 0.037304149825003796,
+          "n": 26137,
+          "mae_rotation": 1.0358818604425102
+        },
+        "Random forest": {
+          "mae": 0.8942697152136467,
+          "rmse": 1.2309572935638928,
+          "r2": 0.31889035349131856,
+          "bias": 0.03930550099896242,
+          "n": 26137,
+          "mae_rotation": 1.0305673937097886
+        },
+        "Gradient boosting": {
+          "mae": 0.8425510485538262,
+          "rmse": 1.2828058617627183,
+          "r2": 0.26030457791675665,
+          "bias": -0.22830370118570223,
+          "n": 26137,
+          "mae_rotation": 0.9927103238470046
+        }
+      },
+      "interval": {
+        "coverage": 0.7974518881279412,
+        "avg_width": 2.9358808943948795,
+        "validation_coverage": 0.77995811680757
+      },
+      "ablation": [
+        {
+          "added_group": "form",
+          "n_features": 47,
+          "mae": 0.8428930345557654
+        },
+        {
+          "added_group": "context",
+          "n_features": 53,
+          "mae": 0.8429217295092795
+        },
+        {
+          "added_group": "opponent",
+          "n_features": 59,
+          "mae": 0.8429479696694092
+        },
+        {
+          "added_group": "team",
+          "n_features": 61,
+          "mae": 0.8429479696694092
+        },
+        {
+          "added_group": "availability",
+          "n_features": 63,
+          "mae": 0.8425510485538262
+        }
+      ],
+      "importance": [
+        {
+          "feature": "FG3A_L10",
+          "mae_increase": 0.2811086778248227
+        },
+        {
+          "feature": "FG3M_SEASON_AVG",
+          "mae_increase": 0.02027674147628585
+        },
+        {
+          "feature": "TEAM_MISSING_MIN",
+          "mae_increase": 0.002916352874786717
+        },
+        {
+          "feature": "FG3A_L3",
+          "mae_increase": 0.0018850594943632022
+        },
+        {
+          "feature": "MIN_SEASON_AVG",
+          "mae_increase": 0.0007142735188931937
+        },
+        {
+          "feature": "MIN_L3",
+          "mae_increase": 0.00037926684662810867
+        },
+        {
+          "feature": "FG3A_L5",
+          "mae_increase": 0.0002539587032153919
+        },
+        {
+          "feature": "OPP_ALLOWED_FG3M_L10",
+          "mae_increase": 0.00016683278363723483
+        },
+        {
+          "feature": "PTS_L3",
+          "mae_increase": 4.9167648754363157e-05
+        },
+        {
+          "feature": "FG3M_L3",
+          "mae_increase": 1.8810881305249733e-05
+        },
+        {
+          "feature": "OPP_ALLOWED_AST_L10",
+          "mae_increase": 6.532552136266172e-08
+        },
+        {
+          "feature": "OPP_ALLOWED_POSS_L10",
+          "mae_increase": 0.0
+        },
+        {
+          "feature": "OPP_ALLOWED_REB_L10",
+          "mae_increase": 0.0
+        },
+        {
+          "feature": "TEAM_POSS_L10",
+          "mae_increase": 0.0
+        },
+        {
+          "feature": "TEAM_PTS_L10",
+          "mae_increase": 0.0
+        }
+      ]
+    },
+    "MIN": {
+      "label": "Minutes",
+      "params": {
+        "learning_rate": 0.05,
+        "max_leaf_nodes": 31,
+        "max_iter": 200
+      },
+      "models": {
+        "Season average": {
+          "mae": 5.321855761952118,
+          "rmse": 6.9971739057334,
+          "r2": 0.5299558070175393,
+          "bias": -0.5481214367375654,
+          "n": 26137,
+          "mae_rotation": 4.904384749584611
+        },
+        "Last 10 games": {
+          "mae": 5.175688967200301,
+          "rmse": 6.798947525186737,
+          "r2": 0.5562107944906308,
+          "bias": -0.003619398486970998,
+          "n": 26137,
+          "mae_rotation": 4.73359360348032
+        },
+        "Ridge": {
+          "mae": 4.741733738904875,
+          "rmse": 6.1478849409009415,
+          "r2": 0.637135219420417,
+          "bias": 0.23771667732322765,
+          "n": 26137,
+          "mae_rotation": 4.4442950714713145
+        },
+        "Random forest": {
+          "mae": 4.667278165061353,
+          "rmse": 6.064980390753195,
+          "r2": 0.6468557347903828,
+          "bias": 0.24806276229350782,
+          "n": 26137,
+          "mae_rotation": 4.370334736592232
+        },
+        "Gradient boosting": {
+          "mae": 4.62493333965779,
+          "rmse": 6.064917018571071,
+          "r2": 0.6468631146677537,
+          "bias": 0.26820587912202487,
+          "n": 26137,
+          "mae_rotation": 4.353290714562761
+        }
+      },
+      "interval": {
+        "coverage": 0.8007805027355855,
+        "avg_width": 15.19669618161515,
+        "validation_coverage": 0.7999689754130148
+      },
+      "ablation": [
+        {
+          "added_group": "form",
+          "n_features": 47,
+          "mae": 4.885681967214052
+        },
+        {
+          "added_group": "context",
+          "n_features": 53,
+          "mae": 4.844835024644275
+        },
+        {
+          "added_group": "opponent",
+          "n_features": 59,
+          "mae": 4.841495474058002
+        },
+        {
+          "added_group": "team",
+          "n_features": 61,
+          "mae": 4.838731985187012
+        },
+        {
+          "added_group": "availability",
+          "n_features": 63,
+          "mae": 4.62493333965779
+        }
+      ],
+      "importance": [
+        {
+          "feature": "MIN_L3",
+          "mae_increase": 1.1621152164251198
+        },
+        {
+          "feature": "MIN_L5",
+          "mae_increase": 0.4356703263030847
+        },
+        {
+          "feature": "MIN_L10",
+          "mae_increase": 0.41401078839275957
+        },
+        {
+          "feature": "TEAM_MISSING_MIN",
+          "mae_increase": 0.3802707565037024
+        },
+        {
+          "feature": "MIN_SEASON_AVG",
+          "mae_increase": 0.2777371807073858
+        },
+        {
+          "feature": "REST_DAYS",
+          "mae_increase": 0.07936131509435966
+        },
+        {
+          "feature": "SEASON_GAME_NUMBER",
+          "mae_increase": 0.017824409911120814
+        },
+        {
+          "feature": "OPP_MISSING_MIN",
+          "mae_increase": 0.015195698931297722
+        },
+        {
+          "feature": "PTS_SEASON_AVG",
+          "mae_increase": 0.013482593978390097
+        },
+        {
+          "feature": "MIN_STD_L10",
+          "mae_increase": 0.005861258741188813
+        },
+        {
+          "feature": "GAMES_PLAYED_PRIOR",
+          "mae_increase": 0.0042756191781660275
+        },
+        {
+          "feature": "MIN_TREND",
+          "mae_increase": 0.003767952366477978
+        },
+        {
+          "feature": "PTS_L3",
+          "mae_increase": 0.0032690496693552618
+        },
+        {
+          "feature": "PTS_TREND",
+          "mae_increase": 0.002537140091103988
+        },
+        {
+          "feature": "PTS_STD_L10",
+          "mae_increase": 0.002444233477424914
+        }
+      ]
+    }
+  }
+}
